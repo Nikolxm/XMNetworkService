@@ -8,12 +8,9 @@
 
 #import "XMNetworkServiceManager.h"
 #import <AFNetworking/AFNetworking.h>
-#import "XMNetworkServiceMehtodBaseAPI.h"
-#import "XMNetworkSystemConfiguration.h"
-
 
 @interface XMNetworkServiceManager ()
-@property (nonatomic, strong) XMNetworkSystemConfiguration *systemConfig;
+
 @end
 
 @implementation XMNetworkServiceManager
@@ -28,18 +25,26 @@
     return manager;
 }
 
-- (XMNetworkSystemConfiguration *)systemConfig {
-    if (_systemConfig == nil) {
-        _systemConfig = [XMNetworkSystemConfiguration sharedInstance];
-    }
-    
-    return _systemConfig;
-}
-
-- (void)requestWithAPI:(XMNetworkServiceMehtodBaseAPI *)api {
+- (void)requestWithAPI:(id<XMNetworkServiceConfigMethodInterface>)api {
     @synchronized(self) {
-        NSString *URL = [self URLStingWithAPI:api];
-        NSDictionary *params = [self paramsWithAPI:api];
+        NSString *URL = [api.requestURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        
+        
+        NSDictionary *params = [api methodParamsForInterface];
+        
+        if (self.paramsManager&&self.systemParams) {
+            params = [self.paramsManager paramsForInterfaceWithMethod:api
+                                                               System:self.systemParams];
+        }
+        
+        if (params) {
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+            NSString *paramsJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"\nURL\n:%@\n params:\n%@\n", api.requestURL, paramsJson);
+        }
+        else {
+            NSLog(@"\nURL\n:%@\n params:\n%@\n", api.requestURL, params);
+        }
         
         switch (api.requestMethodMode) {
             case XMNetworkServiceRequestMethodModeGET: {
@@ -99,48 +104,6 @@
             }
                 break;
         }
-    }
-}
-
-/**
- *  @author Xuemin, 16-03-21 12:03:49
- *
- *  @brief 配置URL
- *
- *  @param api 方法API model
- *
- *  @return 方法级 和 系统级 整合的URL
- *
- *  @since 1.0
- */
-- (NSString *)URLStingWithAPI:(XMNetworkServiceMehtodBaseAPI *)api {
-    NSString *path = [api.relativePathToBaseURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    
-    if (api.identifier && [api respondsToSelector:@selector(URIIdentifier)]) {
-        [path stringByAppendingPathComponent:api.URIIdentifier];
-    }
-    
-    NSURL *URL = [NSURL URLWithString:path];
-
-    //如果这是一个有HOST的字符串则直接返回
-    if (URL.host) {
-        return path;
-    }
-    else {
-        //基于baseURL构建
-        NSString *urlString = [self.systemConfig.baseURL stringByAppendingPathComponent:path];
-        return urlString;
-    }
-}
-
-- (NSDictionary *)paramsWithAPI:(XMNetworkServiceMehtodBaseAPI *)api {
-    if (api.methodParamsForInterface) {
-        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:api.methodParamsForInterface];
-        [params setDictionary:self.systemConfig.systemParams];
-        return params;
-    }
-    else {
-        return self.systemConfig.systemParams;
     }
 }
 @end

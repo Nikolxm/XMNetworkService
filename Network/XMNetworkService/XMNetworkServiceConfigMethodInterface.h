@@ -41,22 +41,11 @@ typedef NS_ENUM(NSInteger, XMNetworkServiceRequestMethodMode) {
 - (NSDictionary *)methodParamsForInterface;
 
 /**
- * 例1 @"xx/xx" 会根据XMNetworkSystemConfiguration拼接形成完整的URL
- * 例2 @"http://xx/xx" 直接使用这个URL
+ * 例 @"http://xx/xx" URL
  */
-- (NSString *)relativePathToBaseURL; //相对与baseURL的路径
+- (NSString *)requestURL; //请求URL
 
 @optional
-/**
- *  @author Xuemin, 16-03-21 11:03:38
- *
- *  @brief 如果是RESTful API 尝试模式实现（获取这个不会调用relativePathToBaseURL）
- 
- *  @return identifier 资源标识 可以为空
- *
- *  @since 1.0
- */
-- (NSString *)URIIdentifier;
 
 /**
  *  @author Xuemin, 16-03-21 14:03:22

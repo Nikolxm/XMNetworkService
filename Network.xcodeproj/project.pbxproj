@@ -47,10 +47,10 @@
 		190536C81C9FE88500564A4E /* XMNetworkServiceConfigMethodInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNetworkServiceConfigMethodInterface.h; sourceTree = "<group>"; };
 		190536C91C9FE88500564A4E /* XMNetworkServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNetworkServiceManager.h; sourceTree = "<group>"; };
 		190536CA1C9FE88500564A4E /* XMNetworkServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNetworkServiceManager.m; sourceTree = "<group>"; };
-		190536CB1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNetworkServiceMehtodBaseAPI.h; sourceTree = "<group>"; };
-		190536CC1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNetworkServiceMehtodBaseAPI.m; sourceTree = "<group>"; };
-		190536CD1C9FE88500564A4E /* XMNetworkSystemConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNetworkSystemConfiguration.h; sourceTree = "<group>"; };
-		190536CE1C9FE88500564A4E /* XMNetworkSystemConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNetworkSystemConfiguration.m; sourceTree = "<group>"; };
+		190536CB1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMNetworkServiceMehtodBaseAPI.h; path = XMNetworkService/XMNetworkServiceMehtodBaseAPI.h; sourceTree = "<group>"; };
+		190536CC1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMNetworkServiceMehtodBaseAPI.m; path = XMNetworkService/XMNetworkServiceMehtodBaseAPI.m; sourceTree = "<group>"; };
+		190536CD1C9FE88500564A4E /* XMNetworkSystemConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMNetworkSystemConfiguration.h; path = XMNetworkService/XMNetworkSystemConfiguration.h; sourceTree = "<group>"; };
+		190536CE1C9FE88500564A4E /* XMNetworkSystemConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMNetworkSystemConfiguration.m; path = XMNetworkService/XMNetworkSystemConfiguration.m; sourceTree = "<group>"; };
 		197852431BFC585F0043D893 /* Network.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Network.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		197852471BFC585F0043D893 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		197852491BFC585F0043D893 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		1978526A1BFC585F0043D893 /* NetworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1978526E1BFC585F0043D893 /* NetworkUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkUITests.m; sourceTree = "<group>"; };
 		197852701BFC585F0043D893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19C91A2F1CDC484C004A5708 /* XMNetworkServiceConfigSystemInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNetworkServiceConfigSystemInterface.h; sourceTree = "<group>"; };
+		19C91A301CDC4A2B004A5708 /* XMNetworkServiceConfigInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNetworkServiceConfigInterface.h; sourceTree = "<group>"; };
 		19D9F8961BFD9E65005271F4 /* UserAPIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserAPIModel.h; path = APIModel/UserAPIModel.h; sourceTree = "<group>"; };
 		19D9F8971BFD9E65005271F4 /* UserAPIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserAPIModel.m; path = APIModel/UserAPIModel.m; sourceTree = "<group>"; };
 		B6ACAC883538B472271F3C06 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,12 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				190536C81C9FE88500564A4E /* XMNetworkServiceConfigMethodInterface.h */,
+				19C91A2F1CDC484C004A5708 /* XMNetworkServiceConfigSystemInterface.h */,
+				19C91A301CDC4A2B004A5708 /* XMNetworkServiceConfigInterface.h */,
 				190536C91C9FE88500564A4E /* XMNetworkServiceManager.h */,
 				190536CA1C9FE88500564A4E /* XMNetworkServiceManager.m */,
-				190536CB1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.h */,
-				190536CC1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.m */,
-				190536CD1C9FE88500564A4E /* XMNetworkSystemConfiguration.h */,
-				190536CE1C9FE88500564A4E /* XMNetworkSystemConfiguration.m */,
 			);
 			path = XMNetworkService;
 			sourceTree = "<group>";
@@ -140,6 +140,10 @@
 		197852451BFC585F0043D893 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				190536CB1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.h */,
+				190536CC1C9FE88500564A4E /* XMNetworkServiceMehtodBaseAPI.m */,
+				190536CD1C9FE88500564A4E /* XMNetworkSystemConfiguration.h */,
+				190536CE1C9FE88500564A4E /* XMNetworkSystemConfiguration.m */,
 				190536C71C9FE88500564A4E /* XMNetworkService */,
 				19D9F8951BFD9E3D005271F4 /* APIModel */,
 				197852491BFC585F0043D893 /* AppDelegate.h */,

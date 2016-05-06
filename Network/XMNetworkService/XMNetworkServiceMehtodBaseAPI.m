@@ -19,7 +19,7 @@
     return nil;
 }
 
-- (NSURL *)relativePathToBaseURL {
+- (NSString *)requestURL {
     return nil;
 }
 

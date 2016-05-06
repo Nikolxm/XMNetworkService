@@ -10,7 +10,7 @@
 
 @implementation TestAPIModel
 
-- (NSString *)relativePathToBaseURL {
-    return @"http://api.map.baidu.com/telematics/v3/weather?location=huizhou&output=json&ak=5slgyqGDENN7Sy7pw29IUvrZ";
+- (NSString *)requestURL {
+    return @"http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key=惠州&bk_length=600";
 }
 @end

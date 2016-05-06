@@ -10,38 +10,23 @@
 
 @implementation XMNetworkSystemConfiguration
 
-@synthesize baseURL = _baseURL;
-@synthesize systemParams = _systemParams;
-
-+ (instancetype)sharedInstance {
-    static XMNetworkSystemConfiguration *manager = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        manager = [[XMNetworkSystemConfiguration alloc] init];
-    });
+- (NSDictionary *)paramsForInterfaceWithMethod:(id<XMNetworkServiceConfigMethodInterface>)method
+                                        System:(id<XMNetworkServiceConfigSystemInterface>)system {
     
-    return manager;
-}
-
-- (NSString *)baseURL {
-    if (_baseURL == nil) {
-        //这里更改主域名
-        _baseURL = @"http://www.baidu.com";
+    NSDictionary *systemParams = [system systemParamsForInterface];
+    NSDictionary *methodParams = [method methodParamsForInterface];
+    
+    NSMutableDictionary *parsms = [NSMutableDictionary dictionary];
+    
+    //整合参数
+    if (systemParams) {
+        [parsms setDictionary:systemParams];
     }
     
-    return _baseURL;
-}
-
-- (NSDictionary *)systemParams {
-    if (_systemParams == nil) {
-        
-        //这里配置只一次系统参数（如果有需要每次配置请求，去掉判断_systemParams == nil）
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        
-        _systemParams = params;
+    if (methodParams) {
+        [parsms setDictionary:methodParams];
     }
     
-    
-    return  _systemParams;
+    return parsms;
 }
 @end
